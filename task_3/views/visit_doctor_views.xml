@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>    
+    <record id="hr_hospital_visit_doctor_tree" model="ir.ui.view">
+      <field name="name">hospital.visit.doctor.tree</field>
+      <field name="model">hospital.visit.doctor</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="doctor"/>
+          <field name="patient"/>
+          <field name="appointment_date"/>
+          <field name="diagnos"/>
+        </tree>
+      </field>
+    </record>
+    
+    <record id="hospital_visit_doctor_action_window" model="ir.actions.act_window">
+      <field name="name">Visit Doctor</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hospital.visit.doctor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="hospital_visit_doctor_menu"
+              action = "hospital_visit_doctor_action_window"
+              parent="task_3_catalog_menu"
+              name="Visit Doctor"
+              sequence="200"/>
+</odoo>

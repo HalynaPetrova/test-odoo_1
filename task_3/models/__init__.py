@@ -1,0 +1,1 @@
+from . import person, contact_person, patient, doctor, diagnosis, diseas_catalog, visit_doctor, personal_doctor_history, doctor_intern

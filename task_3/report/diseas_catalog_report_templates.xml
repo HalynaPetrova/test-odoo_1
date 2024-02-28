@@ -1,0 +1,12 @@
+<odoo>
+    <template id="report_diseas_catalog">
+        <t t-call="web.html_container">
+            <h1>Hello world</h1>
+            <t t-foreach="docs" t-as="o">
+                <t t-set="row_number" t-value="row_number if row_number else 0"/>
+                <t t-out="row_number"/>
+                <p>This object's name is <h1 t-field="o.name"/></p>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>   
+    <record id="hr_hospital_contact_person_tree" model="ir.ui.view">
+      <field name="name">hospital.contact.person.tree</field>
+      <field name="model">hospital.contact.person</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="first_name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="hospital_contact_person_action_window" model="ir.actions.act_window">
+      <field name="name">ContactPerson</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hospital.contact.person</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="hospital_contact_person_menu"
+              action = "hospital_contact_person_action_window"
+              parent="task_3_catalog_menu"
+              name="ContactPerson"
+              sequence="200"/>
+</odoo>

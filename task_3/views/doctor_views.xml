@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>   
+    <record id="hr_hospital_doctor_tree" model="ir.ui.view">
+      <field name="name">hospital.doctor.tree</field>
+      <field name="model">hospital.doctor</field>
+      <field name="arch" type="xml">
+        <tree multi_edit="1">
+          <field name="first_name" decoration-info="first_name=='Doctor1'"/>
+          <field name="last_name" decoration-danger="first_name=='Doctor2'"/>
+          <field name="surname" optional="hide"/>
+          <field name="full_name"/>
+          <button string="New button" name="write" attrs="{'invisible': [('surname','=','Doctor2')]}"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="hr_hospital_doctor_pivot" model="ir.ui.view">
+      <field name="name">hospital.doctor.pivot</field>
+      <field name="model">hospital.doctor</field>
+      <field name="arch" type="xml">
+        <pivot>
+          <field name="first_name" decoration-info="first_name=='Doctor1'"/>
+          <field name="last_name" decoration-danger="first_name=='Doctor2'"/>
+          <field name="surname" optional="hide"/>
+          <field name="full_name"/>
+        </pivot>
+      </field>
+    </record>
+
+    <record id="hr_hospital_doctor_form" model="ir.ui.view">
+      <field name="name">hospital.doctor.form</field>
+      <field name="model">hospital.doctor</field>
+      <field name="arch" type="xml">
+        <form>
+        <header>
+            <button type="object" class="btn-primary" string="Create" name="create"/>
+          <field name="state" widget="statusbar" options="{'clickable': '5'}"/>
+        </header>
+          <sheet>
+          <!-- <div class="oe_button_box" name="button_box">
+            <button type="object" class="btn-primary" string="Create" name="create"/>
+            <button type="object" class="btn-primary" string="Create" name="create"/>
+          </div> -->
+            <div class="oe_button_box" name="button_box"> 
+              <button type="object" name="create" class="btn-primary">
+                <div class="o_field_widget o_stat_info">
+                  <span class="o_stat_text">Customer</span>
+                  <span class="o_stat_text">Name</span>
+                </div>
+              </button>
+            </div>
+            <widget name="web_ribbon" title="Male" bg_color="bg-danger" attrs="{'invisible': [('state', '=', 'male')]}"/>
+            <field name='state' invisible="1"/>
+            <group>
+              <group>
+                <field name="first_name"/>
+              </group>
+              <group>
+                <field name="last_name"/> 
+              </group>
+              <newline/>
+              <group>
+                <field name="surname"/>   
+              </group>
+            </group>
+            <notebook>
+              <page string="Authors">
+                <field name="gender" mode="kanban"/>
+              </page>
+              <page string="Names">
+                <group>
+                  <field name="first_name"/>
+                  <field name="last_name"/>
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="hospital_doctor_action_window" model="ir.actions.act_window">
+      <field name="name">Doctor</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hospital.doctor</field>
+      <field name="view_mode">tree,pivot,form</field>
+    </record>
+
+    <menuitem id="hospital_doctor_menu"
+              action = "hospital_doctor_action_window"
+              parent="task_3_catalog_menu"
+              name="Doctor"
+              sequence="200"/>
+</odoo>
